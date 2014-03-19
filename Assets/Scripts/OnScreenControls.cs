@@ -7,7 +7,7 @@ public class OnScreenControls : MonoBehaviour {
 
 	private PlayerController playerController;
 
-	void Start() {
+	void Awake() {
 		playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 
