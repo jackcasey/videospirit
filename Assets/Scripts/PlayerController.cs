@@ -5,20 +5,76 @@ public class PlayerController : MonoBehaviour {
 
 	public int direction = 1;
 	public float speed = 20f;
+	public int color = 1;
+
+	public GameObject trail;
+	private Vector4 greenTrail = new Vector4(0f, 1f, 0f, 0.25f);
+	private Vector4 blueTrail = new Vector4(0f, 0f, 1f, 0.45f);
+	private Vector4 greenSprite = new Vector4(0.3f,0.9f,0.3f,1f);
+	private Vector4 blueSprite = new Vector4(0.3f,0.3f,1f,1f);
+
+
 
 	private float _currentRotation;
+	private SpriteRenderer _spriteRenderer;
+	private Material _playerTrail;
+
 	// Use this for initialization
 	void Start () {
-	
+		_spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		_playerTrail = trail.GetComponent<ParticleSystem>().renderer.material;
+		SetColor (2);
 	}
-	
+	public void SetColor(int color_)
+	{
+		color = color_;
+		if (color == 1)
+		{
+			_spriteRenderer.color = blueSprite;
+			_playerTrail.SetColor ("_TintColor", blueTrail);
+		} 
+
+		else 
+		{
+			_spriteRenderer.color = greenSprite;
+			_playerTrail.SetColor ("_TintColor", greenTrail);
+		}	
+
+	}
+	public void TurnLeft()
+	{
+		direction++;
+		SetColor(1);
+	}
+	public void TurnRight()
+	{
+		direction--;
+		SetColor(2);
+	}
+	public void Up()
+	{
+		direction=2;
+	}
+	public void Down()
+	{
+		direction=4;
+	}
+	public void Left()
+	{
+		direction=3;
+	}
+	public void Right()
+	{
+		direction=1;
+	}
+
 	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetKeyDown("left"))
-			direction++;
+			TurnLeft ();
 		else if (Input.GetKeyDown("right"))
-			direction--;
+			TurnRight ();
 
 		if (direction > 4)
 			direction -= 4;
