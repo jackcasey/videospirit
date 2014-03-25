@@ -4,11 +4,12 @@ using System.Collections;
 public class PlayerJoystickController : MonoBehaviour {
 	
 	public UMJDemo_Joystick MoveJoystick;
-	
+	public GameObject player;
+
 	private PlayerController playerController;
 	
 	void Start() {
-		playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		playerController = player.GetComponent<PlayerController>();
 	}
 
 	void Update () 

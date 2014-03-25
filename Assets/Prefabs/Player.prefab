@@ -115,7 +115,6 @@ MonoBehaviour:
   direction: 1
   speed: 40
   color: 1
-  trail: {fileID: 100000}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,23 +6,18 @@ public class PlayerController : MonoBehaviour {
 	public int direction = 1;
 	public float speed = 20f;
 	public int color = 1;
-
-	public GameObject trail;
-	private Vector4 greenTrail = new Vector4(0f, 1f, 0f, 0.25f);
-	private Vector4 blueTrail = new Vector4(0f, 0f, 1f, 0.45f);
-	private Vector4 greenSprite = new Vector4(0.3f,0.9f,0.3f,1f);
-	private Vector4 blueSprite = new Vector4(0.3f,0.3f,1f,1f);
-
-
-
+	
 	private float _currentRotation;
 	private SpriteRenderer _spriteRenderer;
 	private Material _playerTrail;
 
+	private Vector4 greenSprite = new Vector4(0.3f,0.9f,0.3f,1f);
+	private Vector4 blueSprite = new Vector4(0.3f,0.3f,1f,1f);
+	private Vector4 redSprite = new Vector4(1.0f,0.2f,0.0f,1f);
+
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		_spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-		_playerTrail = trail.GetComponent<ParticleSystem>().renderer.material;
 		SetColor (2);
 	}
 	public void SetColor(int color_)
@@ -31,14 +26,15 @@ public class PlayerController : MonoBehaviour {
 		if (color == 1)
 		{
 			_spriteRenderer.color = blueSprite;
-			_playerTrail.SetColor ("_TintColor", blueTrail);
 		} 
-
-		else 
+		else if (color == 2) 
 		{
 			_spriteRenderer.color = greenSprite;
-			_playerTrail.SetColor ("_TintColor", greenTrail);
-		}	
+		}
+		else if (color == 3)
+		{
+			_spriteRenderer.color = redSprite;
+		}
 
 	}
 	public void TurnLeft()
@@ -70,11 +66,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-		if (Input.GetKeyDown("left"))
-			TurnLeft ();
-		else if (Input.GetKeyDown("right"))
-			TurnRight ();
 
 		if (direction > 4)
 			direction -= 4;
@@ -111,38 +102,5 @@ public class PlayerController : MonoBehaviour {
 			//rigidbody.velocity = Vector3.zero;
 		}
 	}
-
-	void OldUpdate () {
-		float h = Input.GetAxis("Horizontal");
-		float v = Input.GetAxis("Vertical");
-
-		if (h > 0 && direction != 3)
-		{
-			direction = 1;
-		}
-		else if (h < 0 && direction != 1)
-		{
-			transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-			direction = 3;
-		}
-		else if (v < 0 && direction != 2)
-		{
-			transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-			direction = 4;
-		}
-		else if (v > 0 && direction != 4)
-		{
-			transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-			direction = 2;
-		} 
-//		else 
-//		{
-//			direction = 0;
-//		}
-		if (direction > 0)
-		{
-			transform.rotation = Quaternion.Euler(0f, 0f, (direction-1)*90f);
-		}
-		GetComponent<Animator>().SetBool("moving", direction > 0);
-	}
+	
 }
