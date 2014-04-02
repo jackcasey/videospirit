@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		_spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-		SetColor (2);
+		SetColor (color);
 	}
 	public void SetColor(int color_)
 	{

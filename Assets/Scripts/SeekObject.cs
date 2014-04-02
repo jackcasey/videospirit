@@ -19,6 +19,9 @@ public class SeekObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (target == null)
+			return;
+
 		Vector3 delta = (target.transform.position - transform.position);
 
 		float deltaAngle = -Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg + 90 + 45;

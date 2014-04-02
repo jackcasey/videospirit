@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19900000}
   m_Layer: 0
   m_Name: PlayerTrail
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.681286335}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -67,7 +67,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  speed: 40
+  speed: 400
   color: 1
 --- !u!114 &11400002
 MonoBehaviour:
@@ -121,16 +121,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c0f5abe1e6cc784d9077e6f506d5d7c, type: 3}
+  m_Script: {fileID: 11500000, guid: d21d877228863e54f842a62c885f8462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comfortZone: 3
-  minSwipeDist: 14
-  maxSwipeTime: 1
-  lastSwipe: 0
-  lastSwipeTime: 0
+  trail: {fileID: 100000}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
